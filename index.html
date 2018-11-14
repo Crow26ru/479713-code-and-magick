@@ -181,6 +181,47 @@
   </div>
 </template>
 
+<script>
+  var fireballSize = 22;
+  var wizardSpeed = 3;
+  var wizardWidth = 70;
+  
+  var getFireballSpeed = function(left) {
+    if(left) {
+      return 5;
+    } else {
+      return 2;
+    }
+  };
+  
+  var getWizardHeight = function(width) {
+    return 1.337 * width;
+  };
+  
+  //Изображение позиционируется относительно верхнего левого угла
+  //Чтобы спозиционировать изображение мага надо:
+  //1 - Найти центр блока по горизонтали;
+  //2 - Вычислить половину ширины изображения мага;
+  //3 - Вычесть от центра блока по горизонтали значение половины ширины изображения мага;
+  //4 - Найти координату блока по вертикали, составляющая 2 / 3 от его высоты;
+  //5 - Вычислить высоту изображения мага;
+  //6 - Прибавить к координате блока по вертикали высоту мага.
+  //В итоге изображение мага будет спозиционированно
+  
+  function getWizardX(width) {
+    var centerCanvasX = width / 2;
+    var halfWidthWizard = wizardWidth / 2;
+    var wizardPositionX = centerCanvasX - halfWidthWizard;
+    return wizardPositionX;
+  }
+  
+  function getWizardY(height) {
+    var positionCanvasY = 1 / 3 * height;
+    var heightWizard = getWizardHeight(wizardWidth);
+    var wizardPositionY = positionCanvasY - heightWizard;
+    return wizardPositionY;
+  }
+</script>
 <script src="js/game.js"></script>
 
 </body>
