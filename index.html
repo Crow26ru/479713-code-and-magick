@@ -209,14 +209,14 @@
   //В итоге изображение мага будет спозиционированно
   
   function getWizardX(width) {
-    var centerCanvasX = width / 2.0;
-    var halfWidthWizard = wizardWidth / 2.0;
+    var centerCanvasX = width / 2;
+    var halfWidthWizard = wizardWidth / 2;
     var wizardPositionX = centerCanvasX - halfWidthWizard;
     return wizardPositionX;
   }
   
   function getWizardY(height) {
-    var positionCanvasY = 1.0 / 3.0 * height;
+    var positionCanvasY = 1 / 3 * height;
     var heightWizard = getWizardHeight(wizardWidth);
     var wizardPositionY = positionCanvasY - heightWizard;
     return wizardPositionY;
