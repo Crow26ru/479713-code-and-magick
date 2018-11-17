@@ -37,6 +37,6 @@ window.renderStatistics = function(ctx) {
     ]
   };
   
-  renderCloud(ctx, 'rgba(0, 0, 0, 0.3)', shadowCloud);
+  renderCloud(ctx, 'rgba(0, 0, 0, 0.7)', shadowCloud);
   renderCloud(ctx, '#ffffff', cloud);
 };
