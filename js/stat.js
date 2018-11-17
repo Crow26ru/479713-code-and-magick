@@ -1,5 +1,11 @@
 'use strict';
 
+var HISTOGRAM_WIDTH = 40;
+var HISTOGRAM_MAX_HEIGHT = 150;
+var HISTOGRAM_START_POSITION_Y = 88;
+var NAME_POSITION_Y = 244;
+var GAP = 50;
+
 var renderCloud = function(ctx, color, figure) {
   ctx.beginPath();
   ctx.moveTo(figure.startPosition.x, figure.startPosition.y);
@@ -64,4 +70,29 @@ window.renderStatistics = function(ctx, names, times) {
   ctx.textBaseline = 'hanging';
   ctx.fillText('Ура вы победили', 150, 24);
   ctx.fillText('Список результатов:', 150, 48);
+
+  if(names.length != times.length) {
+    ctx.fillText('Ошибка данных:\nНевозможно построить гистограмму!', 150, 130);
+  } else {
+    var maxTime = getMaxResult(times);
+    
+    for(var i = 0; i < names.length; i++) {
+      var color = '#000000';
+      var heightHistogram = times[i] * HISTOGRAM_MAX_HEIGHT / maxTime;
+      var topGap = HISTOGRAM_MAX_HEIGHT - heightHistogram;
+      
+      if(names[i] === 'Вы') {
+        color = 'rgba(255, 0, 0, 1)';
+      } else {
+        color = 'rgba(0, 0, 255, ' + Math.random() + ')';
+      }
+
+      ctx.fillStyle = '#000000';
+      ctx.fillText(Math.floor(times[i]), 150 + (GAP + HISTOGRAM_WIDTH) * i, 72 + topGap);
+      ctx.fillStyle = color;
+      ctx.fillRect(150 + (GAP + HISTOGRAM_WIDTH) * i, HISTOGRAM_START_POSITION_Y + topGap, HISTOGRAM_WIDTH, heightHistogram);
+      ctx.fillStyle = '#000000';
+      ctx.fillText(names[i], 150 + (GAP + HISTOGRAM_WIDTH) * i, NAME_POSITION_Y);
+    }
+  }  
 };
