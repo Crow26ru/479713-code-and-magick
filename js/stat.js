@@ -6,36 +6,31 @@ var HISTOGRAM_START_POSITION_Y = 88;
 var NAME_POSITION_Y = 244;
 var GAP = 50;
 
-var renderCloud = function(ctx, color, figure) {
+var renderCloud = function (ctx, color, figure) {
   ctx.beginPath();
   ctx.moveTo(figure.startPosition.x, figure.startPosition.y);
-  
-  for(var i = 0; i < figure.points.length; i++) {
+  for (var i = 0; i < figure.points.length; i++) {
     ctx.lineTo(figure.points[i].x, figure.points[i].y);
   }
-
   ctx.closePath();
   ctx.fillStyle = color;
   ctx.fill();
 };
 
-var getMaxResult = function(player) {
-  if(player.length == 1) {
+var getMaxResult = function (player) {
+  if (player.length === 1) {
     return player[0];
   }
-
   var maxResult = player[0];
-
-  for(var i = 1; i < player.length; i++) {
-    if(maxResult < player[i]) {
+  for (var i = 1; i < player.length; i++) {
+    if (maxResult < player[i]) {
       maxResult = player[i];
     }
   }
-
   return maxResult;
 };
 
-window.renderStatistics = function(ctx, names, times) {
+window.renderStatistics = function (ctx, names, times) {
   var cloud = {
     startPosition: {x: 100, y: 10},
     points: [
@@ -62,7 +57,6 @@ window.renderStatistics = function(ctx, names, times) {
       {x: 120, y: 20}
     ]
   };
-  
   renderCloud(ctx, 'rgba(0, 0, 0, 0.7)', shadowCloud);
   renderCloud(ctx, '#ffffff', cloud);
   ctx.fillStyle = '#000000';
@@ -70,23 +64,19 @@ window.renderStatistics = function(ctx, names, times) {
   ctx.textBaseline = 'hanging';
   ctx.fillText('Ура вы победили', 150, 24);
   ctx.fillText('Список результатов:', 150, 48);
-
-  if(names.length != times.length) {
+  if (names.length !== times.length) {
     ctx.fillText('Ошибка данных:\nНевозможно построить гистограмму!', 150, 130);
   } else {
     var maxTime = getMaxResult(times);
-    
-    for(var i = 0; i < names.length; i++) {
+    for (var i = 0; i < names.length; i++) {
       var color = '#000000';
       var heightHistogram = times[i] * HISTOGRAM_MAX_HEIGHT / maxTime;
       var topGap = HISTOGRAM_MAX_HEIGHT - heightHistogram;
-      
-      if(names[i] === 'Вы') {
+      if (names[i] === 'Вы') {
         color = 'rgba(255, 0, 0, 1)';
       } else {
         color = 'rgba(0, 0, 255, ' + Math.random() + ')';
       }
-
       ctx.fillStyle = '#000000';
       ctx.fillText(Math.floor(times[i]), 150 + (GAP + HISTOGRAM_WIDTH) * i, 72 + topGap);
       ctx.fillStyle = color;
@@ -94,5 +84,5 @@ window.renderStatistics = function(ctx, names, times) {
       ctx.fillStyle = '#000000';
       ctx.fillText(names[i], 150 + (GAP + HISTOGRAM_WIDTH) * i, NAME_POSITION_Y);
     }
-  }  
+  }
 };
