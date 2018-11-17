@@ -13,7 +13,7 @@ var renderCloud = function(ctx, color, figure) {
   ctx.fill();
 };
 
-window.renderStatistics = function(ctx) {
+window.renderStatistics = function(ctx, names, times) {
   var cloud = {
     startPosition: {x: 100, y: 10},
     points: [
