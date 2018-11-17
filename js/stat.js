@@ -7,10 +7,26 @@ var renderCloud = function(ctx, color, figure) {
   for(var i = 0; i < figure.points.length; i++) {
     ctx.lineTo(figure.points[i].x, figure.points[i].y);
   }
-  
+
   ctx.closePath();
   ctx.fillStyle = color;
   ctx.fill();
+};
+
+var getMaxResult = function(player) {
+  if(player.length == 1) {
+    return player[0];
+  }
+
+  var maxResult = player[0];
+
+  for(var i = 1; i < player.length; i++) {
+    if(maxResult < player[i]) {
+      maxResult = player[i];
+    }
+  }
+
+  return maxResult;
 };
 
 window.renderStatistics = function(ctx, names, times) {
@@ -43,4 +59,9 @@ window.renderStatistics = function(ctx, names, times) {
   
   renderCloud(ctx, 'rgba(0, 0, 0, 0.7)', shadowCloud);
   renderCloud(ctx, '#ffffff', cloud);
+  ctx.fillStyle = '#000000';
+  ctx.font = '16px PT Mono';
+  ctx.textBaseline = 'hanging';
+  ctx.fillText('Ура вы победили', 150, 24);
+  ctx.fillText('Список результатов:', 150, 48);
 };
