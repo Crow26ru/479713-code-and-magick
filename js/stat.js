@@ -15,25 +15,29 @@ var renderCloud = function(ctx, color, figure) {
 
 window.renderStatistics = function(ctx) {
   var cloud = {
-    startPosition: {x: 100, y: 50},
+    startPosition: {x: 100, y: 10},
     points: [
-      {x: 500, y: 50},
-      {x: 550, y: 125},
-      {x: 500, y: 200},
-      {x: 100, y: 200},
-      {x: 50, y: 125},
-      {x: 100, y: 50}
+      {x: 310, y: 20},
+      {x: 520, y: 10},
+      {x: 510, y: 145},
+      {x: 520, y: 280},
+      {x: 310, y: 270},
+      {x: 100, y: 280},
+      {x: 110, y: 145},
+      {x: 100, y: 10}
     ]
   };
   var shadowCloud = {
-    startPosition: {x: 110, y: 60},
+    startPosition: {x: 110, y: 20},
     points: [
-      {x: 510, y: 60},
-      {x: 560, y: 135},
-      {x: 510, y: 210},
-      {x: 110, y: 210},
-      {x: 60, y: 135},
-      {x: 110, y: 60}
+      {x: 320, y: 30},
+      {x: 530, y: 20},
+      {x: 520, y: 155},
+      {x: 530, y: 290},
+      {x: 320, y: 280},
+      {x: 110, y: 290},
+      {x: 120, y: 155},
+      {x: 120, y: 20}
     ]
   };
   
