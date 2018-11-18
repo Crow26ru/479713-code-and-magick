@@ -6,6 +6,21 @@ var HISTOGRAM_START_POSITION_Y = 88;
 var NAME_POSITION_Y = 244;
 var GAP = 50;
 
+var renderTime = function (ctx, color, iteration, time, gap) {
+  ctx.fillStyle = color;
+  ctx.fillText(Math.floor(time), 150 + (GAP + HISTOGRAM_WIDTH) * iteration, 72 + gap);
+};
+
+var renderHistogramElement = function (ctx, color, iteration, height, gap) {
+  ctx.fillStyle = color;
+  ctx.fillRect(150 + (GAP + HISTOGRAM_WIDTH) * iteration, HISTOGRAM_START_POSITION_Y + gap, HISTOGRAM_WIDTH, height);
+};
+
+var renderPlayerName = function (ctx, color, name, iteration) {
+  ctx.fillStyle = color;
+  ctx.fillText(name, 150 + (GAP + HISTOGRAM_WIDTH) * iteration, NAME_POSITION_Y);
+};
+
 var renderCloud = function (ctx, color, figure) {
   ctx.beginPath();
   ctx.moveTo(figure.startPosition.x, figure.startPosition.y);
@@ -77,12 +92,9 @@ window.renderStatistics = function (ctx, names, times) {
       } else {
         color = 'rgba(0, 0, 255, ' + Math.random() + ')';
       }
-      ctx.fillStyle = '#000000';
-      ctx.fillText(Math.floor(times[i]), 150 + (GAP + HISTOGRAM_WIDTH) * i, 72 + topGap);
-      ctx.fillStyle = color;
-      ctx.fillRect(150 + (GAP + HISTOGRAM_WIDTH) * i, HISTOGRAM_START_POSITION_Y + topGap, HISTOGRAM_WIDTH, heightHistogram);
-      ctx.fillStyle = '#000000';
-      ctx.fillText(names[i], 150 + (GAP + HISTOGRAM_WIDTH) * i, NAME_POSITION_Y);
+      renderTime(ctx, '#000000', i, times[i], topGap);
+      renderHistogramElement(ctx, color, i, heightHistogram, topGap);
+      renderPlayerName(ctx, '#000000', names[i], i);
     }
   }
 };
