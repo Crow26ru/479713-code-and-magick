@@ -53,6 +53,17 @@ var setCoatColor = function () {
     'rgb(0, 0, 0)'
   ];
   return colors[Math.floor(Math.random() * colors.length)];
-}
+};
+
+var setEyesColor = function () {
+  var colors = [
+    'black',
+    'red',
+    'blue',
+    'yellow',
+    'green'
+  ];
+  return colors[Math.floor(Math.random() * colors.length)];
+};
 
 showModalSetup();
