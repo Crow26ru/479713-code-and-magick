@@ -40,9 +40,9 @@ var setFullname = function () {
   var surname = setSurname();
 
   if (Math.floor(Math.random() * 2)) {
-    return name + surname;
+    return name + ' ' + surname;
   }
-  return surname + name;
+  return surname + ' ' + name;
 };
 
 var setCoatColor = function () {
