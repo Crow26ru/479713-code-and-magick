@@ -17,4 +17,18 @@ var setName = function () {
   return names[Math.floor(Math.random() * names.length)];
 };
 
+var setSurname = function () {
+  var surnames = [
+    'да Марья',
+    'Верон',
+    'Мирабелла',
+    'Вальц',
+    'Онопко',
+    'Топольницкая',
+    'Нионго',
+    'Ирвинг'
+  ];
+  return surnames[Math.floor(Math.random() * surnames.length)];
+}
+
 showModalSetup();
