@@ -1,5 +1,7 @@
 'use strict';
 
+var wizards = [];
+
 var showModalSetup = function () {
   var modalSetup = document.querySelector('.setup');
   modalSetup.classList.remove('hidden');
@@ -66,4 +68,20 @@ var setEyesColor = function () {
   return colors[Math.floor(Math.random() * colors.length)];
 };
 
+var generateRandomWizard = function () {
+  var wizard = {
+    name: setFullname(),
+    coatColor: setCoatColor(),
+    eyesColor: setEyesColor()
+  };
+  return wizard;
+};
+
+var createWizards = function (total) {
+  for (var i = 0; i < total; i++) {
+    wizards.push(generateRandomWizard());
+  }
+};
+
 showModalSetup();
+createWizards(4);
