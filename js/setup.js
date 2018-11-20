@@ -1,3 +1,5 @@
+'use strict';
+
 var showModalSetup = function () {
   var modalSetup = document.querySelector('.setup');
   modalSetup.classList.remove('hidden');
@@ -29,6 +31,16 @@ var setSurname = function () {
     'Ирвинг'
   ];
   return surnames[Math.floor(Math.random() * surnames.length)];
-}
+};
+
+var setFullname = function () {
+  var name = setName();
+  var surname = setSurname();
+
+  if (Math.floor(Math.random() * 2)) {
+    return name + surname;
+  }
+  return surname + name;
+};
 
 showModalSetup();
