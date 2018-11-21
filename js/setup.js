@@ -1,6 +1,10 @@
 'use strict';
 
 var wizards = [];
+var similarListElement = document.querySelector('.setup-similar-list');
+var similarWizardTemplate = document.querySelector('#similar-wizard-template')
+    .content
+    .querySelector('.setup-similar-item');
 
 var showModalSetup = function () {
   var modalSetup = document.querySelector('.setup');
@@ -83,5 +87,20 @@ var createWizards = function (total) {
   }
 };
 
+var createSimilarWizards = function (total) {
+  var fragment = document.createDocumentFragment();
+
+  for (var i = 0; i < total; i++) {
+    var wizardElement = similarWizardTemplate.cloneNode(true);
+    fragment.appendChild(wizardElement);
+    wizardElement.querySelector('.setup-similar-label').textContent = wizards[i].name;
+    wizardElement.querySelector('.wizard-coat').style.fill = wizards[i].coatColor;
+    wizardElement.querySelector('.wizard-eyes').style.fill = wizards[i].eyesColor;
+  }
+  similarListElement.appendChild(fragment);
+};
+
 showModalSetup();
 createWizards(4);
+document.querySelector('.setup-similar').classList.remove('hidden');
+createSimilarWizards(4);
