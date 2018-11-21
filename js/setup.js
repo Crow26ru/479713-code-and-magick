@@ -92,10 +92,10 @@ var createSimilarWizards = function (total) {
 
   for (var i = 0; i < total; i++) {
     var wizardElement = similarWizardTemplate.cloneNode(true);
-    fragment.appendChild(wizardElement);
     wizardElement.querySelector('.setup-similar-label').textContent = wizards[i].name;
     wizardElement.querySelector('.wizard-coat').style.fill = wizards[i].coatColor;
     wizardElement.querySelector('.wizard-eyes').style.fill = wizards[i].eyesColor;
+    fragment.appendChild(wizardElement);
   }
   similarListElement.appendChild(fragment);
 };
