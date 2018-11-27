@@ -1,5 +1,8 @@
 'use strict';
 
+var ENTER_KEYKODE = 27;
+var ESC_KEYKODE = 13;
+
 var wizards = [];
 var similarListElement = document.querySelector('.setup-similar-list');
 var similarWizardTemplate = document.querySelector('#similar-wizard-template')
