@@ -1,7 +1,7 @@
 'use strict';
 
-var ENTER_KEYKODE = 27;
-var ESC_KEYKODE = 13;
+var ENTER_KEYCODE = 13;
+var ESC_KEYCODE = 27;
 
 var wizards = [];
 var similarListElement = document.querySelector('.setup-similar-list');
@@ -123,9 +123,23 @@ var setupOpenHandler = function () {
   showModalSetup();
 };
 
+var setupOpenKeyboardHandler = function (evt) {
+  if (evt.keyCode == ENTER_KEYCODE) {
+    showModalSetup();
+  }
+};
+
 var setupCloseHandler = function () {
   closeModalSetup();
 };
 
+var setupCloseKeyboardHandler = function (evt) {
+  if (evt.keyCode == ESC_KEYCODE) {
+    closeModalSetup();
+  }
+};
+
 modalSetupOpen.addEventListener('click', setupOpenHandler);
+modalSetupOpen.addEventListener('keydown', setupOpenKeyboardHandler);
 modalSetupClose.addEventListener('click', setupCloseHandler);
+window.addEventListener('keydown', setupCloseKeyboardHandler);
