@@ -5,10 +5,17 @@ var similarListElement = document.querySelector('.setup-similar-list');
 var similarWizardTemplate = document.querySelector('#similar-wizard-template')
     .content
     .querySelector('.setup-similar-item');
+var modalSetupOpen = document.querySelector('.setup-open');
+var modalSetupClose = document.querySelector('.setup-close');
 
 var showModalSetup = function () {
   var modalSetup = document.querySelector('.setup');
   modalSetup.classList.remove('hidden');
+};
+
+var closeModalSetup = function () {
+  var modalSetup = document.querySelector('.setup');
+  modalSetup.classList.add('hidden');
 };
 
 var setName = function () {
@@ -100,7 +107,22 @@ var createSimilarWizards = function (total) {
   similarListElement.appendChild(fragment);
 };
 
+// ВЫЗОВ ФУНКЦИЙ
+
 showModalSetup();
 createWizards(4);
 document.querySelector('.setup-similar').classList.remove('hidden');
 createSimilarWizards(4);
+
+// ОБРАБОТЧИКИ СОБЫТИЙ
+
+var setupOpenHandler = function () {
+  showModalSetup();
+};
+
+var setupCloseHandler = function () {
+  closeModalSetup();
+};
+
+modalSetupOpen.addEventListener('click', setupOpenHandler);
+modalSetupClose.addEventListener('click', setupCloseHandler);
