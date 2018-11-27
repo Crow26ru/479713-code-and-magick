@@ -10,6 +10,7 @@ var similarWizardTemplate = document.querySelector('#similar-wizard-template')
     .querySelector('.setup-similar-item');
 var modalSetupOpen = document.querySelector('.setup-open');
 var modalSetupClose = document.querySelector('.setup-close');
+var inputUserName = document.querySelector('.setup-user-name')
 
 var showModalSetup = function () {
   var modalSetup = document.querySelector('.setup');
@@ -143,3 +144,9 @@ modalSetupOpen.addEventListener('click', setupOpenHandler);
 modalSetupOpen.addEventListener('keydown', setupOpenKeyboardHandler);
 modalSetupClose.addEventListener('click', setupCloseHandler);
 window.addEventListener('keydown', setupCloseKeyboardHandler);
+inputUserName.addEventListener('focus', function () {
+  window.removeEventListener('keydown', setupCloseKeyboardHandler);
+});
+inputUserName.addEventListener('blur', function () {
+  window.addEventListener('keydown', setupCloseKeyboardHandler);
+});
