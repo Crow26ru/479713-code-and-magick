@@ -140,13 +140,17 @@ var setupCloseKeyboardHandler = function (evt) {
   }
 };
 
+var removeCloseKeyboardHandler = function () {
+  window.removeEventListener('keydown', setupCloseKeyboardHandler);
+};
+
+var addCloseKeyboardHandler = function () {
+  window.addEventListener('keydown', setupCloseKeyboardHandler);
+};
+
 modalSetupOpen.addEventListener('click', setupOpenHandler);
 modalSetupOpen.addEventListener('keydown', setupOpenKeyboardHandler);
 modalSetupClose.addEventListener('click', setupCloseHandler);
 window.addEventListener('keydown', setupCloseKeyboardHandler);
-inputUserName.addEventListener('focus', function () {
-  window.removeEventListener('keydown', setupCloseKeyboardHandler);
-});
-inputUserName.addEventListener('blur', function () {
-  window.addEventListener('keydown', setupCloseKeyboardHandler);
-});
+inputUserName.addEventListener('focus', removeCloseKeyboardHandler);
+inputUserName.addEventListener('blur', addCloseKeyboardHandler);
