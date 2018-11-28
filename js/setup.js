@@ -14,14 +14,18 @@ var inputUserName = document.querySelector('.setup-user-name')
 
 var showModalSetup = function () {
   var modalSetup = document.querySelector('.setup');
+  var setupSubmit = document.querySelector('.setup-submit');
   modalSetup.classList.remove('hidden');
   document.addEventListener('keydown', modalEscPressHandler);
+  setupSubmit.addEventListener('submit', modalSubmitHandler);
 };
 
 var closeModalSetup = function () {
   var modalSetup = document.querySelector('.setup');
+  var setupSubmit = document.querySelector('.setup-submit');
   modalSetup.classList.add('hidden');
   document.removeEventListener('keydown', modalEscPressHandler);
+  setupSubmit.removeEventListener('submit', modalSubmitHandler);
 };
 
 var setName = function () {
@@ -163,6 +167,10 @@ var modalEscPressHandler = function (evt) {
   if (evt.keyCode === ESC_KEYCODE) {
     closeModalSetup();
   }
+};
+
+var modalSubmitHandler = function (evt) {
+  evt.stopPropagation();
 };
 
 modalSetupOpen.addEventListener('click', function () {
