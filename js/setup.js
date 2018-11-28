@@ -10,23 +10,21 @@ var similarWizardTemplate = document.querySelector('#similar-wizard-template')
     .querySelector('.setup-similar-item');
 var modalSetupOpen = document.querySelector('.setup-open');
 var modalSetupClose = document.querySelector('.setup-close');
-var inputUserName = document.querySelector('.setup-user-name')
+var inputUserName = document.querySelector('.setup-user-name');
 var wizardCoat = document.querySelector('.wizard-coat');
 var wizardEyes = document.querySelector('.wizard-eyes');
 var wizardFireball = document.querySelector('.setup-fireball-wrap');
 
 var showModalSetup = function () {
   var modalSetup = document.querySelector('.setup');
-  var submitButton = document.querySelector('.setup-submit');
-  
+
   modalSetup.classList.remove('hidden');
   document.addEventListener('keydown', modalEscPressHandler);
 };
 
 var closeModalSetup = function () {
   var modalSetup = document.querySelector('.setup');
-  var submitButton = document.querySelector('.setup-submit');
-  
+
   modalSetup.classList.add('hidden');
   document.removeEventListener('keydown', modalEscPressHandler);
 };
@@ -198,7 +196,7 @@ modalSetupClose.addEventListener('click', function () {
   closeModalSetup();
 });
 
-modalSetupClose.addEventListener('keydown', function(evt) {
+modalSetupClose.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ENTER_KEYCODE) {
     closeModalSetup();
   }
@@ -209,7 +207,7 @@ inputUserName.addEventListener('keydown', function (evt) {
 });
 
 wizardCoat.addEventListener('click', function () {
-  var hiddenInputs = document.querySelectorAll('.setup-wizard-appearance input')
+  var hiddenInputs = document.querySelectorAll('.setup-wizard-appearance input');
 
   for (var i = 0; i < hiddenInputs.length; i++) {
     if (hiddenInputs[i].name === 'coat-color') {
@@ -219,8 +217,8 @@ wizardCoat.addEventListener('click', function () {
   }
 });
 
-wizardEyes.addEventListener('click', function () {  
-  var hiddenInputs = document.querySelectorAll('.setup-wizard-appearance input')
+wizardEyes.addEventListener('click', function () {
+  var hiddenInputs = document.querySelectorAll('.setup-wizard-appearance input');
 
   for (var i = 0; i < hiddenInputs.length; i++) {
     if (hiddenInputs[i].name === 'eyes-color') {
