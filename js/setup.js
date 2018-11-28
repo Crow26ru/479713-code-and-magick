@@ -15,11 +15,13 @@ var inputUserName = document.querySelector('.setup-user-name')
 var showModalSetup = function () {
   var modalSetup = document.querySelector('.setup');
   modalSetup.classList.remove('hidden');
+  document.addEventListener('keydown', modalEscPressHandler);
 };
 
 var closeModalSetup = function () {
   var modalSetup = document.querySelector('.setup');
   modalSetup.classList.add('hidden');
+  document.removeEventListener('keydown', modalEscPressHandler);
 };
 
 var setName = function () {
@@ -120,6 +122,7 @@ createSimilarWizards(4);
 
 // ОБРАБОТЧИКИ СОБЫТИЙ
 
+/*
 var setupOpenHandler = function () {
   showModalSetup();
 };
@@ -154,3 +157,34 @@ modalSetupClose.addEventListener('click', setupCloseHandler);
 window.addEventListener('keydown', setupCloseKeyboardHandler);
 inputUserName.addEventListener('focus', removeCloseKeyboardHandler);
 inputUserName.addEventListener('blur', addCloseKeyboardHandler);
+*/
+
+var modalEscPressHandler = function (evt) {
+  if (evt.keyCode === ESC_KEYCODE) {
+    closeModalSetup();
+  }
+};
+
+modalSetupOpen.addEventListener('click', function () {
+  showModalSetup();
+});
+
+modalSetupOpen.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    showModalSetup();
+  }
+});
+
+modalSetupClose.addEventListener('click', function () {
+  closeModalSetup();
+});
+
+modalSetupClose.addEventListener('keydown', function(evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    closeModalSetup();
+  }
+});
+
+inputUserName.addEventListener('keydown', function (evt) {
+  evt.stopPropagation();
+});
