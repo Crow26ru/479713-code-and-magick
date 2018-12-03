@@ -236,3 +236,6 @@ wizardFireball.addEventListener('click', function () {
   fireballFieald.value = setFireballColor();
   wizardFireball.style.background = fireballFieald.value;
 });
+
+document.addEventListener('keydown', modalEscPressHandler);
+
