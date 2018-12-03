@@ -179,7 +179,7 @@ inputUserName.addEventListener('blur', addCloseKeyboardHandler);
 var modalEscPressHandler = function (evt) {
   if (evt.keyCode === ESC_KEYCODE) {
     closeModalSetup();
-    setupElement.removeAttribute('style');
+    window.setupElement.removeAttribute('style');
   }
 };
 
@@ -195,13 +195,13 @@ modalSetupOpen.addEventListener('keydown', function (evt) {
 
 modalSetupClose.addEventListener('click', function () {
   closeModalSetup();
-  setupElement.removeAttribute('style');
+  window.setupElement.removeAttribute('style');
 });
 
 modalSetupClose.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ENTER_KEYCODE) {
     closeModalSetup();
-    setupElement.removeAttribute('style');
+    window.setupElement.removeAttribute('style');
   }
 });
 
