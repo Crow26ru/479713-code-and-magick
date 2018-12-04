@@ -132,8 +132,8 @@ var createSimilarWizards = function (total) {
 
 // ВЫЗОВ ФУНКЦИЙ
 
-showModalSetup();
 createWizards(4);
+showModalSetup();
 document.querySelector('.setup-similar').classList.remove('hidden');
 createSimilarWizards(4);
 
