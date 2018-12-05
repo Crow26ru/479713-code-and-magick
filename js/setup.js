@@ -1,9 +1,6 @@
 'use strict';
 
 (function () {
-  var ENTER_KEYCODE = 13;
-  var ESC_KEYCODE = 27;
-
   var modalSetup = document.querySelector('.setup');
   var modalSetupOpen = document.querySelector('.setup-open');
   var modalSetupClose = modalSetup.querySelector('.setup-close');
@@ -25,7 +22,7 @@
   showModalSetup();
 
   var modalEscPressHandler = function (evt) {
-    if (evt.keyCode === ESC_KEYCODE) {
+    if (evt.keyCode === window.util.ESC_KEYCODE) {
       closeModalSetup();
       window.setupElement.removeAttribute('style');
     }
@@ -36,7 +33,7 @@
   });
 
   modalSetupOpen.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === ENTER_KEYCODE) {
+    if (evt.keyCode === window.util.ENTER_KEYCODE) {
       showModalSetup();
     }
   });
@@ -47,7 +44,7 @@
   });
 
   modalSetupClose.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === ENTER_KEYCODE) {
+    if (evt.keyCode === window.util.ENTER_KEYCODE) {
       closeModalSetup();
       window.setupElement.removeAttribute('style');
     }
