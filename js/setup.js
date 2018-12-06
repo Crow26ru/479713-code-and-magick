@@ -4,6 +4,7 @@
   var modalSetup = document.querySelector('.setup');
   var modalSetupOpen = document.querySelector('.setup-open');
   var modalSetupClose = modalSetup.querySelector('.setup-close');
+  var form = modalSetup.querySelector('form');
 
   window.setup = {
     modalSetup: modalSetup
@@ -51,4 +52,11 @@
   });
 
   document.addEventListener('keydown', modalEscPressHandler);
+
+  form.addEventListener('submit', function (evt) {
+    window.backend.save(new FormData(form), function () {
+      modalSetup.classList.add('hidden');
+    });
+    evt.preventDefault();
+  });
 })();
