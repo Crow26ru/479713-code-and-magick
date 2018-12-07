@@ -8,7 +8,8 @@
   var buttonSubmitElement = form.querySelector('.setup-submit');
 
   window.setup = {
-    modalSetup: modalSetup
+    modalSetup: modalSetup,
+    showError: showError
   };
 
   var showModalSetup = function () {
@@ -25,7 +26,7 @@
 
     document.removeEventListener('keydown', modalEscPressHandler);
   };
-  
+
   // Блокировка кнопки отправки формы
 
   var blockSubmitButton = function () {
@@ -40,9 +41,9 @@
     buttonSubmitElement.style.opacity = opacity;
     buttonSubmitElement.textContent = message;
   };
-  
+
   // Возврат кнопки в исходное состояние
-  
+
   var returnDefaultSubmit = function () {
     var defaultText = 'Сохранить';
 
@@ -50,9 +51,9 @@
     buttonSubmitElement.removeAttribute('style');
     buttonSubmitElement.textContent = defaultText;
   };
-  
+
   // Функция отображения ошибки
-  
+
   var showError = function (message) {
     var overlay = document.createElement('div');
     var banner = document.createElement('div');
@@ -71,19 +72,19 @@
     banner.style.position = 'absolute';
     banner.style.top = '50%';
     banner.style.left = '50%';
-    
+
     banner.style.padding = '20px';
     banner.style.width = '40%';
-    
+
     banner.style.fontFamily = '"Arial", sans-serif';
     banner.style.fontSize = '16px';
     banner.style.lineHeight = '24px';
     banner.style.color = '#000000';
-    
+
     banner.style.backgroundColor = '#ffbbc0';
 
     banner.style.transform = 'translate(-50%, -50%)';
-    
+
     banner.textContent = message;
     overlay.appendChild(banner);
     document.body.appendChild(overlay);
@@ -123,7 +124,7 @@
   document.addEventListener('keydown', modalEscPressHandler);
 
   form.addEventListener('submit', function (evt) {
-    window.backend.save(new FormData(form), closeModalSetup, blockSubmitButton);
+    window.backend.save(new FormData(form), closeModalSetup, blockSubmitButton, showError);
     evt.preventDefault();
   });
 })();
