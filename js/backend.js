@@ -39,7 +39,7 @@
   var load = function (onLoad, onError) {
     var xhr = new XMLHttpRequest();
     xhr.response = 'json';
-    xhr.timeout = '5000';
+    xhr.timeout = '10000';
 
     xhr.addEventListener('timeout', function () {
       onError('Произошла ошибка соединения. Запрос не успел выпониться за ' + xhr.timeout + 'мс.');
@@ -57,7 +57,7 @@
       }
     });
 
-    xhr.open('POST', URL_DOWNLOAD);
+    xhr.open('GET', URL_DOWNLOAD);
     xhr.send();
   };
 
