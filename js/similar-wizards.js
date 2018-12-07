@@ -30,8 +30,9 @@
     similarListElement.appendChild(fragment);
   };
 
+  window.createSimilarWizards = createSimilarWizards;
   window.setup.modalSetup.querySelector('.setup-similar').classList.remove('hidden');
-  createSimilarWizards(window.wizardsCreate.TOTAL_WIZARDS);
+  // createSimilarWizards(window.wizardsCreate.TOTAL_WIZARDS);
 
   inputUserName.addEventListener('keydown', function (evt) {
     evt.stopPropagation();
