@@ -3,7 +3,7 @@
 (function () {
   var TOTAL_WIZARDS = 4;
   var wizards = [];
-  /*
+  var remouteData = [];
   var names = [
     'Иван',
     'Хуан Себастьян',
@@ -25,7 +25,6 @@
     'Нионго',
     'Ирвинг'
   ];
-  */
 
   var coatColors = [
     'rgb(101, 137, 164)',
@@ -44,7 +43,6 @@
     'green'
   ];
 
-  /*
   var setFullname = function () {
     var name = window.util.getRandomElementArray(names);
     var surname = window.util.getRandomElementArray(surnames);
@@ -63,24 +61,20 @@
     };
     return wizard;
   };
-  */
 
-  var getRemouteWizard = function (elem) {
-    var wizard = {
-      name: elem.name,
-      coatColor: elem.colorCoat,
-      eyesColor: elem.colorEyes
-    };
-    return wizard;
-  };
-
-  var createWizards = function (arr) {
-    for (var i = 0; i < TOTAL_WIZARDS; i++) {
-      wizards.push(getRemouteWizard(arr[i]));
+  var createWizards = function (total) {
+    for (var i = 0; i < total; i++) {
+      wizards.push(generateRandomWizard());
     }
   };
+  
+  // Попытка получить первичный массив объектов
+  var some = function (data) {
+    remouteData = data;
+  };
 
-  window.backend.load(createWizards, window.setup.showError);
+  createWizards(TOTAL_WIZARDS);
+  window.backend.load(some, window.setup.showError);
 
   window.wizardsCreate = {
     TOTAL_WIZARDS: TOTAL_WIZARDS,
