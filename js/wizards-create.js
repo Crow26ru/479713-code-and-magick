@@ -3,27 +3,6 @@
 (function () {
   var TOTAL_WIZARDS = 4;
   var wizards = [];
-  var names = [
-    'Иван',
-    'Хуан Себастьян',
-    'Мария',
-    'Кристоф',
-    'Виктор',
-    'Юлия',
-    'Люпита',
-    'Вашингтон'
-  ];
-
-  var surnames = [
-    'да Марья',
-    'Верон',
-    'Мирабелла',
-    'Вальц',
-    'Онопко',
-    'Топольницкая',
-    'Нионго',
-    'Ирвинг'
-  ];
 
   var coatColors = [
     'rgb(101, 137, 164)',
@@ -42,37 +21,28 @@
     'green'
   ];
 
-  var setFullname = function () {
-    var name = window.util.getRandomElementArray(names);
-    var surname = window.util.getRandomElementArray(surnames);
-
-    if (Math.floor(Math.random() * 2)) {
-      return name + ' ' + surname;
-    }
-    return surname + ' ' + name;
-  };
-
-  var generateRandomWizard = function () {
+  var createRemouteWizard = function (elementArray) {
     var wizard = {
-      name: setFullname(),
-      coatColor: window.util.getRandomElementArray(coatColors),
-      eyesColor: window.util.getRandomElementArray(eyesColors)
+      name: elementArray.name,
+      coatColor: elementArray.colorCoat,
+      eyesColor: elementArray.colorEyes
     };
     return wizard;
   };
 
-  var createWizards = function (total) {
-    for (var i = 0; i < total; i++) {
-      wizards.push(generateRandomWizard());
+  var createWizards = function (data) {
+    for (var i = 0; i < TOTAL_WIZARDS; i++) {
+      wizards.push(createRemouteWizard(data[i]));
     }
+    window.createSimilarWizards(TOTAL_WIZARDS);
   };
 
-  createWizards(TOTAL_WIZARDS);
+  window.backend.load(createWizards, window.setup.showError);
 
   window.wizardsCreate = {
     TOTAL_WIZARDS: TOTAL_WIZARDS,
     coatColors: coatColors,
     eyesColors: eyesColors,
-    wizards: wizards
+    wizards: wizards,
   };
 })();
