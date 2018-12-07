@@ -38,7 +38,7 @@
 
   var load = function (onLoad, onError) {
     var xhr = new XMLHttpRequest();
-    xhr.response = 'json';
+    xhr.responseType = 'json';
     xhr.timeout = '10000';
 
     xhr.addEventListener('timeout', function () {
