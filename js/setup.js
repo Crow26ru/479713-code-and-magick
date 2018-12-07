@@ -5,6 +5,7 @@
   var modalSetupOpen = document.querySelector('.setup-open');
   var modalSetupClose = modalSetup.querySelector('.setup-close');
   var form = modalSetup.querySelector('form');
+  var buttonSubmitElement = form.querySelector('.setup-submit');
 
   window.setup = {
     modalSetup: modalSetup
@@ -19,8 +20,35 @@
     modalSetup.classList.add('hidden');
     document.removeEventListener('keydown', modalEscPressHandler);
   };
+  
+  // Блокировка кнопки отправки формы
+
+  var blockSubmitButton = function () {
+    var textColor = '#000000';
+    var backgroundColor = '#cccccc';
+    var opacity = '1';
+    var message = 'Сохраняю персонажа...';
+
+    buttonSubmitElement.setAttribute('disabled', 'disabled');
+    buttonSubmitElement.style.color = textColor;
+    buttonSubmitElement.style.backgroundColor = backgroundColor;
+    buttonSubmitElement.style.opacity = opacity;
+    buttonSubmitElement.textContent = message;
+  };
+  
+  // Возврат кнопки в исходное состояние
+  
+  var returnDefaultSubmit = function () {
+    var defaultText = 'Сохранить';
+
+    buttonSubmitElement.removeAttribute('disabled');
+    buttonSubmitElement.removeAttribute('style');
+    buttonSubmitElement.textContent = defaultText;
+  };
 
   showModalSetup();
+  blockSubmitButton();
+  // returnDefaultSubmit();
 
   var modalEscPressHandler = function (evt) {
     if (evt.keyCode === window.util.ESC_KEYCODE) {
