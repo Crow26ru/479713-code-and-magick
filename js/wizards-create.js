@@ -81,13 +81,15 @@
 
   var createRemWizards = function (data) {
     for (var i = 0; i < TOTAL_WIZARDS; i++) {
-      testViz.push(createRemouteWizard(data[i]));
+      wizards.push(createRemouteWizard(data[i]));
+      console.log(data[i]);
     }
-    console.log(testViz);
+    
+    console.log(wizards);
   };
 
   window.backend.load(createRemWizards, window.setup.showError);
-  createWizards(TOTAL_WIZARDS);
+  //createWizards(TOTAL_WIZARDS);
 
   window.wizardsCreate = {
     TOTAL_WIZARDS: TOTAL_WIZARDS,
