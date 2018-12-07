@@ -3,6 +3,7 @@
 (function () {
   var TOTAL_WIZARDS = 4;
   var wizards = [];
+  var testViz = [];
   var names = [
     'Иван',
     'Хуан Себастьян',
@@ -66,9 +67,9 @@
       wizards.push(generateRandomWizard());
     }
   };
-  
+
   // ТЕСТ
-  
+
   var createRemouteWizard = function (elementArray) {
     var wizard = {
       name: elementArray.name,
@@ -77,17 +78,16 @@
     };
     return wizard;
   };
-  
-  var createRemWizards = function (data) {    
+
+  var createRemWizards = function (data) {
     for (var i = 0; i < TOTAL_WIZARDS; i++) {
-      console.log(createRemouteWizard(data[i]));
+      testViz.push(createRemouteWizard(data[i]));
     }
+    console.log(testViz);
   };
 
   window.backend.load(createRemWizards, window.setup.showError);
-
   createWizards(TOTAL_WIZARDS);
-  // window.backend.load(some, window.setup.showError);
 
   window.wizardsCreate = {
     TOTAL_WIZARDS: TOTAL_WIZARDS,
