@@ -18,6 +18,11 @@
 
   var closeModalSetup = function () {
     modalSetup.classList.add('hidden');
+
+    if (buttonSubmitElement.getAttribute('disabled')) {
+      returnDefaultSubmit();
+    }
+
     document.removeEventListener('keydown', modalEscPressHandler);
   };
   
@@ -45,10 +50,46 @@
     buttonSubmitElement.removeAttribute('style');
     buttonSubmitElement.textContent = defaultText;
   };
+  
+  // Функция отображения ошибки
+  
+  var showError = function (message) {
+    var overlay = document.createElement('div');
+    var banner = document.createElement('div');
+
+    // Может лучше завести отдельный файл со стилями?
+    overlay.style.position = 'fixed';
+    overlay.style.top = '0';
+    overlay.style.left = '0';
+    overlay.style.zIndex = '4';
+
+    overlay.style.height = '100%';
+    overlay.style.width = '100%';
+
+    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+
+    banner.style.position = 'absolute';
+    banner.style.top = '50%';
+    banner.style.left = '50%';
+    
+    banner.style.padding = '20px';
+    banner.style.width = '40%';
+    
+    banner.style.fontFamily = '"Arial", sans-serif';
+    banner.style.fontSize = '16px';
+    banner.style.lineHeight = '24px';
+    banner.style.color = '#000000';
+    
+    banner.style.backgroundColor = '#ffbbc0';
+
+    banner.style.transform = 'translate(-50%, -50%)';
+    
+    banner.textContent = message;
+    overlay.appendChild(banner);
+    document.body.appendChild(overlay);
+  };
 
   showModalSetup();
-  blockSubmitButton();
-  // returnDefaultSubmit();
 
   var modalEscPressHandler = function (evt) {
     if (evt.keyCode === window.util.ESC_KEYCODE) {
@@ -82,9 +123,7 @@
   document.addEventListener('keydown', modalEscPressHandler);
 
   form.addEventListener('submit', function (evt) {
-    window.backend.save(new FormData(form), function () {
-      modalSetup.classList.add('hidden');
-    });
+    window.backend.save(new FormData(form), closeModalSetup, blockSubmitButton);
     evt.preventDefault();
   });
 })();
