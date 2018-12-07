@@ -3,7 +3,6 @@
 (function () {
   var TOTAL_WIZARDS = 4;
   var wizards = [];
-  var remouteData = [];
   var names = [
     'Иван',
     'Хуан Себастьян',
@@ -68,13 +67,27 @@
     }
   };
   
-  // Попытка получить первичный массив объектов
-  var some = function (data) {
-    remouteData = data;
+  // ТЕСТ
+  
+  var createRemouteWizard = function (elementArray) {
+    var wizard = {
+      name: elementArray.name,
+      coatColor: elementArray.colorCoat,
+      eyesColor: elementArray.colorEyes
+    };
+    return wizard;
+  };
+  
+  var createRemWizards = function (data) {    
+    for (var i = 0; i < TOTAL_WIZARDS; i++) {
+      console.log(createRemouteWizard(data[i]));
+    }
   };
 
+  window.backend.load(createRemWizards, window.setup.showError);
+
   createWizards(TOTAL_WIZARDS);
-  window.backend.load(some, window.setup.showError);
+  // window.backend.load(some, window.setup.showError);
 
   window.wizardsCreate = {
     TOTAL_WIZARDS: TOTAL_WIZARDS,
