@@ -1,8 +1,16 @@
 'use strict';
 
 (function () {
+  var Rating = {
+    COAT: 2,
+    EYES: 1
+  };
+
   var TOTAL_WIZARDS = 4;
   var wizards = [];
+  var wizardsCopy = [];
+  var wizardCoatElement = document.querySelector('.setup-player input[name=\'coat-color\']');
+  var wizardEyesElement = document.querySelector('.setup-player input[name=\'eyes-color\']');
 
   var coatColors = [
     'rgb(101, 137, 164)',
@@ -21,6 +29,36 @@
     'green'
   ];
 
+  var setRating = function (coatColor, eyesColor) {
+    wizardsCopy.forEach(function (element) {
+      var rating = 0;
+
+      if (element.coatColor === coatColor) {
+        rating += Rating.COAT;
+      }
+
+      if (element.eyesColor === eyesColor) {
+        rating += Rating.EYES;
+      }
+
+      element.rating = rating;
+    });
+  };
+
+  var sortWizards = function (coatColor, eyesColor) {
+    setRating(coatColor, eyesColor);
+
+    wizardsCopy.sort(function (left, right) {
+      if (left.rating > right.rating) {
+        return -1;
+      } else if (left.rating < right.rating) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+  };
+
   var createRemouteWizard = function (elementArray) {
     var wizard = {
       name: elementArray.name,
@@ -31,9 +69,11 @@
   };
 
   var createWizards = function (data) {
-    for (var i = 0; i < TOTAL_WIZARDS; i++) {
-      wizards.push(createRemouteWizard(data[i]));
-    }
+    data.forEach(function (element) {
+      wizards.push(createRemouteWizard(element));
+      wizardsCopy.push(createRemouteWizard(element));
+    });
+    sortWizards(wizardCoatElement.value, wizardEyesElement.value);
     window.createSimilarWizards(TOTAL_WIZARDS);
   };
 
@@ -44,5 +84,7 @@
     coatColors: coatColors,
     eyesColors: eyesColors,
     wizards: wizards,
+    wizardsCopy: wizardsCopy,
+    sortWizards: sortWizards
   };
 })();
