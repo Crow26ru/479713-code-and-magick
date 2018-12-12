@@ -1,8 +1,16 @@
 'use strict';
 
 (function () {
+  var Rating = {
+    COAT: 2,
+    EYES: 1
+  };
+  
   var TOTAL_WIZARDS = 4;
   var wizards = [];
+  var wizardsCopy = [];
+  var wizardCoatElement = document.querySelector('.setup-player input[name=\'coat-color\']');
+  var wizardEyesElement = document.querySelector('.setup-player input[name=\'eyes-color\']');
 
   var coatColors = [
     'rgb(101, 137, 164)',
@@ -21,6 +29,28 @@
     'green'
   ];
 
+  var setRating = function (coatColor, eyesColor) {
+    wizardsCopy.forEach(function (element) {
+      var rating = 0;
+
+      if (element.coatColor === coatColor) {
+        rating += Rating.COAT;
+      }
+      
+      if (element.eyesColor === eyesColor) {
+        rating += Rating.EYES;
+      }
+      
+      element.rating = rating;
+    });
+    
+    console.log(wizardsCopy);
+  };
+  
+  var sortWizards = function (coatColor, eyesColor) {
+    
+  };
+
   var createRemouteWizard = function (elementArray) {
     var wizard = {
       name: elementArray.name,
@@ -33,7 +63,9 @@
   var createWizards = function (data) {
     data.forEach(function (element) {
       wizards.push(createRemouteWizard(element));
+      wizardsCopy.push(createRemouteWizard(element));
     });
+    setRating(wizardCoatElement.value, wizardEyesElement.value);
     window.createSimilarWizards(TOTAL_WIZARDS);
   };
 
