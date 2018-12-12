@@ -19,7 +19,7 @@
 
   var coatColor;
   var eyesColor;
-  
+
   var updateWizards = function () {
     window.wizardsCreate.sortWizards(coatColor, eyesColor);
     createSimilarWizards(window.wizardsCreate.TOTAL_WIZARDS);
