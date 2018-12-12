@@ -5,7 +5,7 @@
     COAT: 2,
     EYES: 1
   };
-  
+
   var TOTAL_WIZARDS = 4;
   var wizards = [];
   var wizardsCopy = [];
@@ -36,15 +36,15 @@
       if (element.coatColor === coatColor) {
         rating += Rating.COAT;
       }
-      
+
       if (element.eyesColor === eyesColor) {
         rating += Rating.EYES;
       }
-      
+
       element.rating = rating;
     });
   };
-  
+
   var sortWizards = function (coatColor, eyesColor) {
     setRating(coatColor, eyesColor);
 
@@ -84,6 +84,7 @@
     coatColors: coatColors,
     eyesColors: eyesColors,
     wizards: wizards,
-    wizardsCopy: wizardsCopy
+    wizardsCopy: wizardsCopy,
+    sortWizards: sortWizards
   };
 })();
