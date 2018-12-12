@@ -26,9 +26,9 @@
 
     for (var i = 0; i < total; i++) {
       var wizardElement = similarWizardTemplate.cloneNode(true);
-      wizardElement.querySelector('.setup-similar-label').textContent = window.wizardsCreate.wizards[i].name;
-      wizardElement.querySelector('.wizard-coat').style.fill = window.wizardsCreate.wizards[i].coatColor;
-      wizardElement.querySelector('.wizard-eyes').style.fill = window.wizardsCreate.wizards[i].eyesColor;
+      wizardElement.querySelector('.setup-similar-label').textContent = window.wizardsCreate.wizardsCopy[i].name;
+      wizardElement.querySelector('.wizard-coat').style.fill = window.wizardsCreate.wizardsCopy[i].coatColor;
+      wizardElement.querySelector('.wizard-eyes').style.fill = window.wizardsCreate.wizardsCopy[i].eyesColor;
       fragment.appendChild(wizardElement);
     }
     similarListElement.appendChild(fragment);
