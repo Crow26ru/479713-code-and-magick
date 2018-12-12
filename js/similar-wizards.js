@@ -58,7 +58,7 @@
         hiddenInputs[i].value = window.util.getRandomElementArray(window.wizardsCreate.coatColors);
         wizardCoat.style.fill = hiddenInputs[i].value;
         coatColor = hiddenInputs[i].value;
-        updateWizards();
+        window.debounce(updateWizards);
       }
     }
   });
@@ -71,7 +71,7 @@
         hiddenInputs[i].value = window.util.getRandomElementArray(window.wizardsCreate.eyesColors);
         wizardEyes.style.fill = hiddenInputs[i].value;
         eyesColor = hiddenInputs[i].value;
-        updateWizards();
+        window.debounce(updateWizards);
       }
     }
   });
