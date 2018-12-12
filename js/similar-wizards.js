@@ -19,6 +19,11 @@
 
   var coatColor;
   var eyesColor;
+  
+  var updateWizards = function () {
+    window.wizardsCreate.sortWizards(coatColor, eyesColor);
+    createSimilarWizards(window.wizardsCreate.TOTAL_WIZARDS);
+  };
 
   var createSimilarWizards = function (total) {
     var fragment = document.createDocumentFragment();
@@ -53,8 +58,7 @@
         hiddenInputs[i].value = window.util.getRandomElementArray(window.wizardsCreate.coatColors);
         wizardCoat.style.fill = hiddenInputs[i].value;
         coatColor = hiddenInputs[i].value;
-        window.wizardsCreate.sortWizards(coatColor, eyesColor);
-        createSimilarWizards(window.wizardsCreate.TOTAL_WIZARDS);
+        updateWizards();
       }
     }
   });
@@ -67,8 +71,7 @@
         hiddenInputs[i].value = window.util.getRandomElementArray(window.wizardsCreate.eyesColors);
         wizardEyes.style.fill = hiddenInputs[i].value;
         eyesColor = hiddenInputs[i].value;
-        window.wizardsCreate.sortWizards(coatColor, eyesColor);
-        createSimilarWizards(window.wizardsCreate.TOTAL_WIZARDS);
+        updateWizards();
       }
     }
   });
