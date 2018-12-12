@@ -43,12 +43,20 @@
       
       element.rating = rating;
     });
-    
-    console.log(wizardsCopy);
   };
   
   var sortWizards = function (coatColor, eyesColor) {
-    
+    setRating(coatColor, eyesColor);
+
+    wizardsCopy.sort(function (left, right) {
+      if (left.rating > right.rating) {
+        return -1;
+      } else if (left.rating < right.rating) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
   };
 
   var createRemouteWizard = function (elementArray) {
@@ -65,7 +73,7 @@
       wizards.push(createRemouteWizard(element));
       wizardsCopy.push(createRemouteWizard(element));
     });
-    setRating(wizardCoatElement.value, wizardEyesElement.value);
+    sortWizards(wizardCoatElement.value, wizardEyesElement.value);
     window.createSimilarWizards(TOTAL_WIZARDS);
   };
 
@@ -76,5 +84,6 @@
     coatColors: coatColors,
     eyesColors: eyesColors,
     wizards: wizards,
+    wizardsCopy: wizardsCopy
   };
 })();
