@@ -31,9 +31,9 @@
   };
 
   var createWizards = function (data) {
-    for (var i = 0; i < TOTAL_WIZARDS; i++) {
-      wizards.push(createRemouteWizard(data[i]));
-    }
+    data.forEach(function (element) {
+      wizards.push(createRemouteWizard(element));
+    });
     window.createSimilarWizards(TOTAL_WIZARDS);
   };
 
