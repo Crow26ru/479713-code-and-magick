@@ -16,7 +16,7 @@
     '#e848d5',
     '#e6e848'
   ];
-  
+
   var coatColor;
   var eyesColor;
   var fireballColor;
